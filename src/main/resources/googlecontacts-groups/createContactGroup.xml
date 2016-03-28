@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+  ~
+  ~   WSO2 Inc. licenses this file to you under the Apache License,
+  ~   Version 2.0 (the "License"); you may not use this file except
+  ~   in compliance with the License.
+  ~   You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~  Unless required by applicable law or agreed to in writing,
+  ~  software distributed under the License is distributed on an
+  ~  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  ~  KIND, either express or implied.  See the License for the
+  ~  specific language governing permissions and limitations
+  ~  under the License.
+  -->
+<template name="createContactGroup" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="userEmail" description="The user Email ID."/>
+    <parameter name="contactId" description="The contact Id which is supposed to delete." />
+    <parameter name="title" description="The title of the group."/>
+    <parameter name="info" description="The info of the group."/>
+    <sequence>
+        <property name="uri.var.userEmail" expression="$func:userEmail"/>
+        <property name="uri.var.contactId" expression="$func:contactId"/>
+        <property name="uri.var.title" expression="$func:title"/>
+        <property name="uri.var.info" expression="$func:info"/>
+        <property action="remove" name="Accept-Encoding" scope="transport"/>
+        <payloadFactory media-type="xml">
+            <format>
+                <atom:entry xmlns:atom="http://www.w3.org/2005/Atom"
+                            xmlns:gd="http://schemas.google.com/g/2005">
+                    <atom:category scheme="http://schemas.google.com/g/2005#kind"
+                                   term="http://schemas.google.com/contact/2008#group"/>
+                    <atom:title type="text">$1</atom:title>
+                    <gd:extendedProperty name="more info about the group">
+                        <info>$2</info>
+                    </gd:extendedProperty>
+                </atom:entry>
+            </format>
+            <args>
+                <arg expression="$ctx:title"/>
+                <arg expression="$ctx:info"/>
+            </args>
+        </payloadFactory>
+        <script language="js">
+            <![CDATA[
+		        //request body param variables
+		        var title = mc.getProperty('uri.var.title');
+		        var info = mc.getProperty('uri.var.info');
+
+				//request body param processing start
+				var payload = mc.getPayloadXML();
+
+				if (title != null && title != "") {
+					payload.title = title;
+				}
+
+				if (info != "" && info != null) {
+					payload.info = info;
+				}
+
+				mc.setPayloadXML(payload);
+				//request body param processing end
+			]]>
+        </script>
+        <property name="messageType" value="application/atom+xml" scope="axis2"/>
+        <property name="Content-Type" value="application/atom+xml" scope="axis2"/>
+        <header name="Content-Type" value="application/atom+xml" scope="transport"/>
+        <property action="remove" name="Accept-Encoding" scope="transport"/>
+        <header name="If-None-Match" value="Etag" scope="transport" />
+        <call>
+            <endpoint>
+                <http method="post"
+                      uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/feeds/groups/{uri.var.userEmail}/full"/>
+            </endpoint>
+        </call>
+        <!-- Remove response custom header information -->
+        <header name="x-li-format" scope="transport" action="remove"/>
+        <header name="X-LI-UUID" scope="transport" action="remove"/>
+        <header name="X-Li-Pop" scope="transport" action="remove"/>
+        <header name="X-Li-Fabric" scope="transport" action="remove"/>
+        <header name="x-li-request-id" scope="transport" action="remove"/>
+    </sequence>
+</template>

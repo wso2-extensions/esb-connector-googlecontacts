@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+  ~
+  ~   WSO2 Inc. licenses this file to you under the Apache License,
+  ~   Version 2.0 (the "License"); you may not use this file except
+  ~   in compliance with the License.
+  ~   You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~  Unless required by applicable law or agreed to in writing,
+  ~  software distributed under the License is distributed on an
+  ~  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  ~  KIND, either express or implied.  See the License for the
+  ~  specific language governing permissions and limitations
+  ~  under the License.
+  -->
+<template name="retrieveContactsByQuery" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="userEmail" description="User Email ID."/>
+    <parameter name="updatedMin" description="Lower bound on entry update dates."/>
+    <parameter name="maxResults" description="Set the maximum number of entries to return."/>
+    <parameter name="startIndex" description="Set the 1-based index of the first result to be retrieved (for paging)."/>
+    <parameter name="orderby" description="Sort the returned contacts by last-modified date."/>
+    <parameter name="group" description="Retrieve contacts belonging to the specified group Atom Id."/>
+    <parameter name="sortorder" description="Set sorting order direction. direction can be either ascending or descending."/>
+    <parameter name="showdeleted" description="Include deleted contacts in the returned contacts feed."/>
+    <sequence>
+        <property name="uri.var.userEmail" expression="$func:userEmail"/>
+        <property name="updatedMin" expression="$func:updatedMin" type="STRING"/>
+        <property name="maxResults" expression="$func:maxResults" type="STRING"/>
+        <property name="startIndex" expression="$func:startIndex" type="STRING"/>
+        <property name="orderby" expression="$func:orderby" type="STRING"/>
+        <property name="group" expression="$func:group" type="STRING"/>
+        <property name="sortorder" expression="$func:sortorder" type="STRING"/>
+        <property name="showdeleted" expression="$func:showdeleted" type="STRING"/>
+        <!-- Building the URL with the parameters for the API method -->
+        <filter
+                xpath="(not(get-property('updatedMin') = '' or (not(string(get-property('updatedMin'))))))">
+            <then>
+                <property name="uri.var.apiParameters"
+                          expression="fn:concat(get-property('uri.var.apiParameters'),'updatedMin=',get-property('updatedMin'),'&amp;')"/>
+            </then>
+        </filter>
+        <filter
+                xpath="(not(get-property('maxResults') = '' or (not(string(get-property('maxResults'))))))">
+            <then>
+                <property name="uri.var.apiParameters"
+                          expression="fn:concat(get-property('uri.var.apiParameters'),'max_results=',get-property('maxResults'),'&amp;')"/>
+            </then>
+        </filter>
+        <filter
+                xpath="(not(get-property('startIndex') = '' or (not(string(get-property('startIndex'))))))">
+            <then>
+                <property name="uri.var.apiParameters"
+                          expression="fn:concat(get-property('uri.var.apiParameters'),'start_index=',get-property('startIndex'),'&amp;')"/>
+            </then>
+        </filter>
+        <filter
+                xpath="(not(get-property('orderby') = '' or (not(string(get-property('orderby'))))))">
+            <then>
+                <property name="uri.var.apiParameters"
+                          expression="fn:concat(get-property('uri.var.apiParameters'),'orderby=',get-property('orderby'),'&amp;')"/>
+            </then>
+        </filter>
+        <filter
+                xpath="(not(get-property('group') = '' or (not(string(get-property('group'))))))">
+            <then>
+                <property name="uri.var.apiParameters"
+                          expression="fn:concat(get-property('uri.var.apiParameters'),'group=',get-property('group'),'&amp;')"/>
+            </then>
+        </filter>
+        <filter
+                xpath="(not(get-property('sortorder') = '' or (not(string(get-property('sortorder'))))))">
+            <then>
+                <property name="uri.var.apiParameters"
+                          expression="fn:concat(get-property('uri.var.apiParameters'),'sortorder=',get-property('sortorder'),'&amp;')"/>
+            </then>
+        </filter>
+        <filter
+                xpath="(not(get-property('showdeleted') = '' or (not(string(get-property('showdeleted'))))))">
+            <then>
+                <property name="uri.var.apiParameters"
+                          expression="fn:concat(get-property('uri.var.apiParameters'),'showdeleted=',get-property('showdeleted'),'&amp;')"/>
+            </then>
+        </filter>
+        <call>
+            <endpoint>
+                <http method="get"
+                      uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/feeds/contacts/{uri.var.userEmail}/full?{uri.var.apiParameters}"/>
+            </endpoint>
+        </call>
+        <!--uri-template="legacy-encoding:{+uri.var.apiUrl}/m8/feeds/contacts/{+uri.var.userEmail}/full?updated-min={+uri.var.updatedMin}"/>-->
+        <!-- Remove response custom header information -->
+        <header name="x-li-format" scope="transport" action="remove"/>
+        <header name="X-LI-UUID" scope="transport" action="remove"/>
+        <header name="X-Li-Pop" scope="transport" action="remove"/>
+        <header name="X-Li-Fabric" scope="transport" action="remove"/>
+        <header name="x-li-request-id" scope="transport" action="remove"/>
+    </sequence>
+</template>

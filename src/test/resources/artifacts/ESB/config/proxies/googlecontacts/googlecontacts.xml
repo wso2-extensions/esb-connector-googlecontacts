@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+       name="googlecontacts"
+       transports="https,http"
+       statistics="disable"
+       trace="disable"
+       startOnLoad="true">
+	<target>
+		<inSequence>
+			<property name="apiUrl" expression="json-eval($.apiUrl)"/>
+			<property name="apiVersion" expression="json-eval($.apiVersion)"/>
+			<property name="accessToken" expression="json-eval($.accessToken)"/>
+			<property name="clientId" expression="json-eval($.clientId)"/>
+			<property name="clientSecret" expression="json-eval($.clientSecret)"/>
+			<property name="refreshToken" expression="json-eval($.refreshToken)"/>
+			<property name="accessTokenRegistryPath" expression="json-eval($.accessTokenRegistryPath)"/>
+
+			<property name="content" expression="json-eval($.content)"/>
+			<property name="givenName" expression="json-eval($.givenName)"/>
+			<property name="familyName" expression="json-eval($.familyName)"/>
+			<property name="fullName" expression="json-eval($.fullName)"/>
+			<property name="workEmail" expression="json-eval($.workEmail)"/>
+			<property name="homeEmail" expression="json-eval($.homeEmail)"/>
+			<property name="workPhoneNumber" expression="json-eval($.workPhoneNumber)"/>
+			<property name="homePhoneNumber" expression="json-eval($.homePhoneNumber)"/>
+			<property name="city" expression="json-eval($.city)"/>
+			<property name="street" expression="json-eval($.street)"/>
+			<property name="region" expression="json-eval($.region)"/>
+			<property name="postcode" expression="json-eval($.postcode)"/>
+			<property name="country" expression="json-eval($.country)"/>
+			<property name="formattedAddress" expression="json-eval($.formattedAddress)"/>
+			<property name="title" expression="json-eval($.title)"/>
+			<property name="retrieveContactId" expression="json-eval($.retrieveContactId)"/>
+			<property name="updateContactId" expression="json-eval($.updateContactId)"/>
+			<property name="updateGivenName" expression="json-eval($.updateGivenName)"/>
+			<property name="updateFamilyName" expression="json-eval($.updateFamilyName)"/>
+			<property name="updateFullName" expression="json-eval($.updateFullName)"/>
+			<property name="emailAddress" expression="json-eval($.emailAddress)"/>
+			<property name="deleteContactId" expression="json-eval($.deleteContactId)"/>
+			<property name="otherPhoneNumber" expression="json-eval($.otherPhoneNumber)"/>
+			<property name="contactIdUpdate" expression="json-eval($.contactIdUpdate)"/>
+			<property name="userEmail" expression="json-eval($.userEmail)"/>
+			<property name="contactId" expression="json-eval($.contactId)"/>
+			<property name="updatedMin" expression="json-eval($.updatedMin)"/>
+			<property name="maxResults" expression="json-eval($.maxResults)"/>
+			<property name="startIndex" expression="json-eval($.startIndex)"/>
+			<property name="orderby" expression="json-eval($.orderby)"/>
+			<property name="group" expression="json-eval($.group)"/>
+			<property name="sortorder" expression="json-eval($.sortorder)"/>
+			<property name="groupID" expression="json-eval($.groupID)"/>
+			<property name="retrieveContactGroupId" expression="json-eval($.retrieveContactGroupId)"/>
+			<property name="deleteContactGroupId" expression="json-eval($.deleteContactGroupId)"/>
+			<googlecontacts.init>
+				<apiUrl>{$ctx:apiUrl}</apiUrl>
+				<apiVersion>{$ctx:apiVersion}</apiVersion>
+				<accessToken>{$ctx:accessToken}</accessToken>
+				<clientId>{$ctx:clientId}</clientId>
+				<clientSecret>{$ctx:clientSecret}</clientSecret>
+				<refreshToken>{$ctx:refreshToken}</refreshToken>
+				<accessTokenRegistryPath>{$ctx:accessTokenRegistryPath}</accessTokenRegistryPath>
+			</googlecontacts.init>
+			<switch source="get-property('transport', 'Action')">
+				<case regex="urn:retrieveAllContacts">
+					<googlecontacts.retrieveAllContacts>
+						<userEmail>{$ctx:userEmail}</userEmail>
+					</googlecontacts.retrieveAllContacts>
+				</case>
+				<case regex="urn:retrieveSingleContact">
+					<googlecontacts.retrieveSingleContact>
+						<userEmail>{$ctx:userEmail}</userEmail>
+						<contactId>{$ctx:contactId}</contactId>
+					</googlecontacts.retrieveSingleContact>
+				</case>
+				<case regex="urn:retrieveContactsByQuery">
+					<googlecontacts.retrieveContactsByQuery>
+						<userEmail>{$ctx:userEmail}</userEmail>
+						<updatedMin>{$ctx:updatedMin}</updatedMin>
+						<maxResults>{$ctx:maxResults}</maxResults>
+						<startIndex>{$ctx:startIndex}</startIndex>
+						<orderby>{$ctx:orderby}</orderby>
+						<group>{$ctx:group}</group>
+						<sortorder>{$ctx:sortorder}</sortorder>
+						<showdeleted>{$ctx:showdeleted}</showdeleted>
+					</googlecontacts.retrieveContactsByQuery>
+				</case>
+				<case regex="urn:deleteContact">
+					<googlecontacts.deleteContact>
+						<userEmail>{$ctx:userEmail}</userEmail>
+						<contactId>{$ctx:contactId}</contactId>
+					</googlecontacts.deleteContact>
+				</case>
+				<case regex="urn:updateContact">
+					<googlecontacts.updateContact>
+						<userEmail>{$ctx:userEmail}</userEmail>
+						<contactIdUpdate>{$ctx:contactIdUpdate}</contactIdUpdate>
+						<updated>{$ctx:updated}</updated>
+						<givenName>{$ctx:givenName}</givenName>
+						<familyName>{$ctx:familyName}</familyName>
+						<fullName>{$ctx:fullName}</fullName>
+						<content>{$ctx:content}</content>
+						<otherPhoneNumber>{$ctx:otherPhoneNumber}</otherPhoneNumber>
+					</googlecontacts.updateContact>
+				</case>
+				<case regex="urn:createContact">
+					<googlecontacts.createContact>
+						<userEmail>{$ctx:userEmail}</userEmail>
+						<content>{$ctx:content}</content>
+						<givenName>{$ctx:givenName}</givenName>
+						<familyName>{$ctx:familyName}</familyName>
+						<fullName>{$ctx:fullName}</fullName>
+						<workEmail>{$ctx:workEmail}</workEmail>
+						<homeEmail>{$ctx:homeEmail}</homeEmail>
+						<workPhoneNumber>{$ctx:workPhoneNumber}</workPhoneNumber>
+						<homePhoneNumber>{$ctx:homePhoneNumber}</homePhoneNumber>
+						<city>{$ctx:city}</city>
+						<street>{$ctx:street}</street>
+						<region>{$ctx:region}</region>
+						<postcode>{$ctx:postcode}</postcode>
+						<country>{$ctx:country}</country>
+						<formattedAddress>{$ctx:formattedAddress}</formattedAddress>
+					</googlecontacts.createContact>
+				</case>
+				<case regex="urn:batchCreateContacts">
+					<googlecontacts.batchCreateContacts>
+						<userEmail>{$ctx:userEmail}</userEmail>
+						<content>{$ctx:content}</content>
+						<givenName>{$ctx:givenName}</givenName>
+						<familyName>{$ctx:familyName}</familyName>
+						<fullName>{$ctx:fullName}</fullName>
+						<retrieveContactId>{$ctx:retrieveContactId}</retrieveContactId>
+						<updateContactId>{$ctx:updateContactId}</updateContactId>
+						<updateGivenName>{$ctx:updateGivenName}</updateGivenName>
+						<updateFamilyName>{$ctx:updateFamilyName}</updateFamilyName>
+						<updateFullName>{$ctx:updateFullName}</updateFullName>
+						<emailAddress>{$ctx:emailAddress}</emailAddress>
+						<deleteContactId>{$ctx:deleteContactId}</deleteContactId>
+						<otherPhoneNumber>{$ctx:otherPhoneNumber}</otherPhoneNumber>
+					</googlecontacts.batchCreateContacts>
+				</case>
+				<case regex="urn:batchCreateContactGroups">
+					<googlecontacts.batchCreateContactGroups>
+						<userEmail>{$ctx:userEmail}</userEmail>
+						<retrieveContactGroupId>{$ctx:retrieveContactGroupId}</retrieveContactGroupId>
+						<deleteContactGroupId>{$ctx:deleteContactGroupId}</deleteContactGroupId>
+					</googlecontacts.batchCreateContactGroups>
+				</case>
+				<case regex="urn:retrieveAllContactGroups">
+					<googlecontacts.retrieveAllContactGroups>
+						<userEmail>{$ctx:userEmail}</userEmail>
+					</googlecontacts.retrieveAllContactGroups>
+				</case>
+				<case regex="urn:retrieveSingleContactGroup">
+					<googlecontacts.retrieveSingleContactGroup>
+						<userEmail>{$ctx:userEmail}</userEmail>
+						<groupID>{$ctx:groupID}</groupID>
+					</googlecontacts.retrieveSingleContactGroup>
+				</case>
+				<case regex="urn:retrieveContactGroupsByQuery">
+					<googlecontacts.retrieveContactGroupsByQuery>
+						<userEmail>{$ctx:userEmail}</userEmail>
+						<updatedMin>{$ctx:updatedMin}</updatedMin>
+						<maxResults>{$ctx:maxResults}</maxResults>
+						<startIndex>{$ctx:startIndex}</startIndex>
+						<orderby>{$ctx:orderby}</orderby>
+						<group>{$ctx:group}</group>
+						<sortorder>{$ctx:sortorder}</sortorder>
+						<showdeleted>{$ctx:showdeleted}</showdeleted>
+					</googlecontacts.retrieveContactGroupsByQuery>
+				</case>
+				<case regex="urn:createContactGroup">
+					<googlecontacts.createContactGroup>
+						<userEmail>{$ctx:userEmail}</userEmail>
+						<title>{$ctx:title}</title>
+						<info>{$ctx:info}</info>
+					</googlecontacts.createContactGroup>
+				</case>
+				<case regex="urn:deleteContactGroup">
+					<googlecontacts.deleteContactGroup>
+						<userEmail>{$ctx:userEmail}</userEmail>
+						<groupID>{$ctx:groupID}</groupID>
+					</googlecontacts.deleteContactGroup>
+				</case>
+				<case regex="urn:retrieveContactPhoto">
+					<googlecontacts.retrieveContactPhoto>
+						<userEmail>{$ctx:userEmail}</userEmail>
+						<contactId>{$ctx:contactId}</contactId>
+					</googlecontacts.retrieveContactPhoto>
+				</case>
+				<case regex="urn:deleteContactPhoto">
+					<googlecontacts.deleteContactPhoto>
+						<userEmail>{$ctx:userEmail}</userEmail>
+						<contactId>{$ctx:contactId}</contactId>
+					</googlecontacts.deleteContactPhoto>
+				</case>
+			</switch>
+			<respond/>
+		</inSequence>
+		<outSequence>
+			<log/>
+			<send/>
+		</outSequence>
+	</target>
+	<description/>
+</proxy>

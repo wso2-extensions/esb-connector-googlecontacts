@@ -1,0 +1,7 @@
+{
+"accessToken": "%s(accessToken)",
+"userEmail": "%s(userEmail)",
+"apiUrl": "%s(apiUrl)",
+"apiVersion": "%s(apiVersion)",
+"contactId": "%s(contactId)"
+}

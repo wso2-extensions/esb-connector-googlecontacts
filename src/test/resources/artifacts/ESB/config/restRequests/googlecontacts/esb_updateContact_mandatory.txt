@@ -1,0 +1,13 @@
+{
+"accessToken": "%s(accessToken)",
+"apiUrl": "%s(apiUrl)",
+"apiVersion": "%s(apiVersion)",
+"userEmail": "%s(userEmail)",
+"contactIdUpdate": "%s(contactIdUpdate)",
+"updated": "",
+"givenName": "",
+"familyName": "familyName",
+"fullName": "fullName",
+"content":"content",
+"otherPhoneNumber":"otherPhoneNumber"
+}

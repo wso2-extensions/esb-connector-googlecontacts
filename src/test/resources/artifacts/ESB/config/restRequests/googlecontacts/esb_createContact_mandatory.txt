@@ -1,0 +1,20 @@
+{
+"accessToken": "%s(accessToken)",
+"userEmail": "%s(userEmail)",
+"apiUrl": "%s(apiUrl)",
+"apiVersion": "%s(apiVersion)",
+"content": "%s(content)",
+"givenName": "%s(givenName)",
+"familyName": "%s(familyName)",
+"fullName": "%s(fullName)",
+"workEmail": "%s(workEmail)",
+"homeEmail": "%s(homeEmail)",
+"workPhoneNumber": "%s(workPhoneNumber)",
+"homePhoneNumber": "%s(homePhoneNumber)",
+"city": "%s(city)",
+"street": "%s(street)",
+"region": "%s(region)",
+"postcode": "%s(postcode)",
+"country": "%s(country)",
+"formattedAddress": "%s(formattedAddress)"
+}

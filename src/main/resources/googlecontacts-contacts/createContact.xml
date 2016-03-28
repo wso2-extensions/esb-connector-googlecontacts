@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+  ~
+  ~   WSO2 Inc. licenses this file to you under the Apache License,
+  ~   Version 2.0 (the "License"); you may not use this file except
+  ~   in compliance with the License.
+  ~   You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~  Unless required by applicable law or agreed to in writing,
+  ~  software distributed under the License is distributed on an
+  ~  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  ~  KIND, either express or implied.  See the License for the
+  ~  specific language governing permissions and limitations
+  ~  under the License.
+  -->
+<template name="createContact" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="userEmail" description="user Email ID."/>
+    <parameter name="content" description="Contents of creating new contact."/>
+    <parameter name="givenName" description="Given name of the contact."/>
+    <parameter name="familyName" description="Family name of the contact."/>
+    <parameter name="fullName" description="FullName of the contact."/>
+    <parameter name="workEmail" description="WorkEmail of the contact."/>
+    <parameter name="homeEmail" description="HomeEmail of the contact."/>
+    <parameter name="workPhoneNumber" description="Work phoneNumber of the contact."/>
+    <parameter name="homePhoneNumber" description="Home phoneNumber of the contact."/>
+    <parameter name="city" description="City of the contact."/>
+    <parameter name="street" description="Street of the contact."/>
+    <parameter name="region" description="Region of the contact."/>
+    <parameter name="postcode" description="Postcode of the contact."/>
+    <parameter name="country" description="Country of the contact."/>
+    <parameter name="formattedAddress" description="Formatted address of the contact."/>
+    <sequence>
+        <property name="uri.var.userEmail" expression="$func:userEmail"/>
+        <property name="uri.var.content" expression="$func:content"/>
+        <property name="uri.var.givenName" expression="$func:givenName"/>
+        <property name="uri.var.familyName" expression="$func:familyName"/>
+        <property name="uri.var.fullName" expression="$func:fullName"/>
+        <property name="uri.var.workEmail" expression="$func:workEmail"/>
+        <property name="uri.var.homeEmail" expression="$func:homeEmail"/>
+        <property name="uri.var.workPhoneNumber" expression="$func:workPhoneNumber"/>
+        <property name="uri.var.homePhoneNumber" expression="$func:homePhoneNumber"/>
+        <property name="uri.var.city" expression="$func:city"/>
+        <property name="uri.var.street" expression="$func:street"/>
+        <property name="uri.var.region" expression="$func:region"/>
+        <property name="uri.var.postcode" expression="$func:postcode"/>
+        <property name="uri.var.country" expression="$func:country"/>
+        <property name="uri.var.formattedAddress" expression="$func:formattedAddress"/>
+        <property action="remove" name="Accept-Encoding" scope="transport"/>
+        <payloadFactory media-type="xml">
+            <format>
+                <atom:entry xmlns:atom="http://www.w3.org/2005/Atom"
+                            xmlns:gd="http://schemas.google.com/g/2005">
+                    <atom:category scheme="http://schemas.google.com/g/2005#kind"
+                                   term="http://schemas.google.com/contact/2008#contact"/>
+                    <atom:content type="text">$1</atom:content>
+                    <gd:name>
+                        <gd:givenName>$2</gd:givenName>
+                        <gd:familyName>$3</gd:familyName>
+                        <gd:fullName>$4</gd:fullName>
+                    </gd:name>
+                    <gd:email rel="http://schemas.google.com/g/2005#work"
+                              primary="true"
+                              address="$ctx:workEmail" displayName="E. Bennet"/>
+                    <gd:email rel="http://schemas.google.com/g/2005#home"
+                              address="$ctx:homeEmail"/>
+                    <gd:phoneNumber rel="http://schemas.google.com/g/2005#work"
+                                    primary="true">$7</gd:phoneNumber>
+                    <gd:phoneNumber rel="http://schemas.google.com/g/2005#home">$8</gd:phoneNumber>
+                    <gd:structuredPostalAddress
+                            rel="http://schemas.google.com/g/2005#work"
+                            primary="true">
+                        <gd:city>$9</gd:city>
+                        <gd:street>$10</gd:street>
+                        <gd:region>$11</gd:region>
+                        <gd:postcode>$12</gd:postcode>
+                        <gd:country>$13</gd:country>
+                        <gd:formattedAddress>$14</gd:formattedAddress>
+                    </gd:structuredPostalAddress>
+                </atom:entry>
+            </format>
+            <args>
+                <arg expression="$ctx:content"/>
+                <arg expression="$ctx:givenName"/>
+                <arg expression="$ctx:familyName"/>
+                <arg expression="$ctx:fullName"/>
+                <arg expression="$ctx:workEmail"/>
+                <arg expression="$ctx:homeEmail"/>
+                <arg expression="$ctx:workPhoneNumber"/>
+                <arg expression="$ctx:homePhoneNumber"/>
+                <arg expression="$ctx:city"/>
+                <arg expression="$ctx:street"/>
+                <arg expression="$ctx:region"/>
+                <arg expression="$ctx:postcode"/>
+                <arg expression="$ctx:country"/>
+                <arg expression="$ctx:formattedAddress"/>
+            </args>
+        </payloadFactory>
+        <script language="js">
+            <![CDATA[
+		        //request body param variables
+		        var content = mc.getProperty('uri.var.content');
+		        var givenName = mc.getProperty('uri.var.givenName');
+				var familyName = mc.getProperty('uri.var.familyName');
+				var fullName= mc.getProperty('uri.var.fullName');
+				var workEmail= mc.getProperty('uri.var.workEmail');
+				var homeEmail= mc.getProperty('uri.var.homeEmail');
+				var workPhoneNumber= mc.getProperty('uri.var.workPhoneNumber');
+				var homePhoneNumber= mc.getProperty('uri.var.homePhoneNumber');
+				var city= mc.getProperty('uri.var.city');
+				var street= mc.getProperty('uri.var.street');
+				var region= mc.getProperty('uri.var.region');
+				var postcode= mc.getProperty('uri.var.postcode');
+				var country= mc.getProperty('uri.var.country');
+				var formattedAddress= mc.getProperty('uri.var.formattedAddress');
+
+				//request body param processing start
+				var payload = mc.getPayloadJSON();
+
+				if (content != null && content != "") {
+					payload.content = content;
+				}
+
+				if (givenName != "" && givenName != null) {
+					payload.givenName = givenName;
+				}
+
+				if (familyName != null && familyName != "") {
+					payload.familyName = familyName;
+				}
+
+				if (fullName != null && fullName != "") {
+					payload.fullName = fullName;
+				}
+
+				if (workEmail != null && workEmail != "") {
+					payload.workEmail = workEmail;
+				}
+
+				if (homeEmail != null && homeEmail != "") {
+					payload.homeEmail = homeEmail;
+				}
+
+				if (city != null && city != "") {
+					payload.city = city;
+				}
+
+				if (region != null && region != "") {
+					payload.region = region;
+				}
+
+				if (postcode != null && postcode != "") {
+					payload.postcode = postcode;
+				}
+
+				if (postcode != null && postcode != "") {
+					payload.postcode = postcode;
+				}
+
+				if (country != null && country != "") {
+					payload.country = country;
+				}
+
+				if (formattedAddress != null && formattedAddress != "") {
+					payload.formattedAddress = formattedAddress;
+				}
+				mc.setPayloadJSON(payload);
+				//request body param processing end
+			]]>
+        </script>
+        <property name="messageType" value="application/atom+xml" scope="axis2"/>
+        <property name="Content-Type" value="application/atom+xml" scope="axis2"/>
+        <header name="Content-Type" value="application/atom+xml" scope="transport"/>
+        <property action="remove" name="Accept-Encoding" scope="transport"/>
+        <header name="If-None-Match" value="Etag" scope="transport" />
+        <call>
+            <endpoint>
+                <http method="post"
+                      uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/feeds/contacts/{uri.var.userEmail}/full"/>
+            </endpoint>
+        </call>
+        <!-- Remove response custom header information -->
+        <header name="x-li-format" scope="transport" action="remove"/>
+        <header name="X-LI-UUID" scope="transport" action="remove"/>
+        <header name="X-Li-Pop" scope="transport" action="remove"/>
+        <header name="X-Li-Fabric" scope="transport" action="remove"/>
+        <header name="x-li-request-id" scope="transport" action="remove"/>
+    </sequence>
+</template>

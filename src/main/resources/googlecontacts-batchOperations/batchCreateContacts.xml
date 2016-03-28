@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+  ~
+  ~   WSO2 Inc. licenses this file to you under the Apache License,
+  ~   Version 2.0 (the "License"); you may not use this file except
+  ~   in compliance with the License.
+  ~   You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~  Unless required by applicable law or agreed to in writing,
+  ~  software distributed under the License is distributed on an
+  ~  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  ~  KIND, either express or implied.  See the License for the
+  ~  specific language governing permissions and limitations
+  ~  under the License.
+  -->
+<template name="batchCreateContacts" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="userEmail" description="Email of the user whose contacts to be queried."/>
+    <parameter name="retrieveContactId"
+               description="The retrieveContactId which is supposed to retrieve."/>
+    <parameter name="deleteContactId"
+               description="The deleteContactId which is supposed to delete."/>
+    <parameter name="fullName" description="The fullName of the contact."/>
+    <parameter name="givenName" description="The givenName of the contact."/>
+    <parameter name="familyName" description="The familyName of the contact."/>
+    <parameter name="emailAddress" description="The emailAddress of the contact."/>
+    <sequence>
+        <property name="uri.var.userEmail" expression="$func:userEmail"/>
+        <property name="uri.var.retrieveContactId" expression="$func:retrieveContactId"/>
+        <property name="uri.var.deleteContactId" expression="$func:deleteContactId"/>
+        <property name="uri.var.fullName" expression="$func:fullName"/>
+        <property name="uri.var.givenName" expression="$func:givenName"/>
+        <property name="uri.var.familyName" expression="$func:familyName"/>
+        <property name="uri.var.emailAddress" expression="$func:emailAddress"/>
+        <property name="uri.var.If-None-Match" expression="$func:If-None-Match"/>
+        <property action="remove" name="Accept-Encoding" scope="transport"/>
+        <payloadFactory media-type="xml">
+            <format>
+                <feed xmlns='http://www.w3.org/2005/Atom'
+                      xmlns:gd='http://schemas.google.com/g/2005'
+                      xmlns:batch='http://schemas.google.com/gdata/batch'>
+                    <entry>
+                        <batch:id>retrieve</batch:id>
+                        <batch:operation type='query'/>
+                        <id>https://www.google.com/m8/feeds/contacts/$1/full/$2</id>
+                    </entry>
+                    <entry>
+                        <batch:id>create</batch:id>
+                        <batch:operation type='insert'/>
+                        <category scheme='http://schemas.google.com/g/2005#kind'
+                                  term='http://schemas.google.com/g/2008#contact'/>
+                        <gd:name>
+                            <gd:fullName>$4</gd:fullName>
+                            <gd:givenName>$5</gd:givenName>
+                            <gd:familyName>$6</gd:familyName>
+                        </gd:name>
+                        <gd:email rel='http://schemas.google.com/g/2005#home' address='$7'
+                                  primary='true'/>
+                    </entry>
+                    <entry>
+                        <batch:id>delete</batch:id>
+                        <batch:operation type='delete'/>
+                        <id>https://www.google.com/m8/feeds/contacts/$1/full/$3</id>
+                    </entry>
+                </feed>
+
+            </format>
+            <args>
+                <arg expression="$ctx:userEmail"/>
+                <arg expression="$ctx:retrieveContactId"/>
+                <arg expression="$ctx:deleteContactId"/>
+                <arg expression="$ctx:fullName"/>
+                <arg expression="$ctx:givenName"/>
+                <arg expression="$ctx:familyName"/>
+                <arg expression="$ctx:emailAddress"/>
+            </args>
+        </payloadFactory>
+        <script language="js">
+            <![CDATA[
+		        //request body param variables
+		        var fullName = mc.getProperty('uri.var.fullName');
+		        var givenName = mc.getProperty('uri.var.givenName');
+		        var familyName = mc.getProperty('uri.var.familyName');
+
+				//request body param processing start
+				var payload = mc.getPayloadXML();
+
+				if (fullName != null && fullName != "") {
+					payload.fullName = fullName;
+				}
+
+				if (givenName != null && givenName != "") {
+					payload.givenName = givenName;
+				}
+
+				if (familyName != null && familyName != "") {
+					payload.familyName = familyName;
+				}
+
+				mc.setPayloadXML(payload);
+				//request body param processing end
+			]]>
+        </script>
+        <property name="messageType" value="application/atom+xml" scope="axis2"/>
+        <property name="Content-Type" value="application/atom+xml" scope="axis2"/>
+        <header name="Content-Type" value="application/atom+xml" scope="transport"/>
+        <property action="remove" name="Accept-Encoding" scope="transport"/>
+        <header name="If-None-Match" value="Etag" scope="transport"/>
+        <call>
+            <endpoint>
+                <http method="post"
+                      uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/feeds/contacts/{uri.var.userEmail}/full/batch"/>
+            </endpoint>
+        </call>
+        <!-- Remove response custom header information -->
+        <header name="x-li-format" scope="transport" action="remove"/>
+        <header name="X-LI-UUID" scope="transport" action="remove"/>
+        <header name="X-Li-Pop" scope="transport" action="remove"/>
+        <header name="X-Li-Fabric" scope="transport" action="remove"/>
+        <header name="x-li-request-id" scope="transport" action="remove"/>
+    </sequence>
+</template>

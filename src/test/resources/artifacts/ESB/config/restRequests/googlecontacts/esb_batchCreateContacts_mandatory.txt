@@ -1,0 +1,18 @@
+{
+"accessToken": "%s(accessToken)",
+"apiUrl": "%s(apiUrl)",
+"apiVersion": "%s(apiVersion)",
+"userEmail": "%s(userEmail)",
+"content": "contents",
+"givenName": "givenName",
+"familyName": "familyName",
+"fullName": "fullName",
+"retrieveContactId":"9665a4609a04a68",
+"updateContactId":"1f86f3e889800f8",
+"updateGivenName":"updateGivenName",
+"updateFamilyName":"updateFamilyName",
+"updateFullName":"updateFullName",
+"emailAddress":"ykals@gmail.com",
+"otherPhoneNumber":"02122229063",
+"deleteContactId":"99de790c9f0cc8"
+}

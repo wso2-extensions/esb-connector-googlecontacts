@@ -1,0 +1,8 @@
+{
+"accessToken": "%s(accessToken)",
+"apiUrl": "%s(apiUrl)",
+"apiVersion": "%s(apiVersion)",
+"userEmail": "%s(userEmail)",
+"title": "%s(title)",
+"info": "%s(info)"
+}

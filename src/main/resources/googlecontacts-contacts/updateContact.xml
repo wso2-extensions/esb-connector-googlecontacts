@@ -22,8 +22,8 @@
     <parameter name="givenName" description="Given name of the contact."/>
     <parameter name="familyName" description="Family name of the contact."/>
     <parameter name="fullName" description="Full name of the contact."/>
-    <parameter name="updated" description="Updated "/>
-    <parameter name="otherPhoneNumber" description="Other phonr number of the contact."/>
+    <parameter name="updated" description="Date of updated."/>
+    <parameter name="otherPhoneNumber" description="Other phone number of the contact."/>
     <sequence>
         <property name="uri.var.userEmail" expression="$func:userEmail"/>
         <property name="uri.var.contactId" expression="$func:contactId"/>

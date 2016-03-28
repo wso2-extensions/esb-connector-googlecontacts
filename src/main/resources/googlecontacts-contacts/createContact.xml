@@ -17,7 +17,7 @@
   ~  under the License.
   -->
 <template name="createContact" xmlns="http://ws.apache.org/ns/synapse">
-    <parameter name="userEmail" description="user Email ID."/>
+    <parameter name="userEmail" description="Email of the user whose contacts to be queried."/>
     <parameter name="content" description="Contents of creating new contact."/>
     <parameter name="givenName" description="Given name of the contact."/>
     <parameter name="familyName" description="Family name of the contact."/>
@@ -61,16 +61,14 @@
                         <gd:familyName>$3</gd:familyName>
                         <gd:fullName>$4</gd:fullName>
                     </gd:name>
-                    <gd:email rel="http://schemas.google.com/g/2005#work"
-                              primary="true"
+                    <gd:email rel="http://schemas.google.com/g/2005#work" primary="true"
                               address="$ctx:workEmail" displayName="E. Bennet"/>
-                    <gd:email rel="http://schemas.google.com/g/2005#home"
-                              address="$ctx:homeEmail"/>
-                    <gd:phoneNumber rel="http://schemas.google.com/g/2005#work"
-                                    primary="true">$7</gd:phoneNumber>
+                    <gd:email rel="http://schemas.google.com/g/2005#home" address="$ctx:homeEmail"/>
+                    <gd:phoneNumber rel="http://schemas.google.com/g/2005#work" primary="true">
+                        $7
+                    </gd:phoneNumber>
                     <gd:phoneNumber rel="http://schemas.google.com/g/2005#home">$8</gd:phoneNumber>
-                    <gd:structuredPostalAddress
-                            rel="http://schemas.google.com/g/2005#work"
+                    <gd:structuredPostalAddress rel="http://schemas.google.com/g/2005#work"
                             primary="true">
                         <gd:city>$9</gd:city>
                         <gd:street>$10</gd:street>
@@ -174,7 +172,7 @@
         <property name="Content-Type" value="application/atom+xml" scope="axis2"/>
         <header name="Content-Type" value="application/atom+xml" scope="transport"/>
         <property action="remove" name="Accept-Encoding" scope="transport"/>
-        <header name="If-None-Match" value="Etag" scope="transport" />
+        <header name="If-None-Match" value="Etag" scope="transport"/>
         <call>
             <endpoint>
                 <http method="post"

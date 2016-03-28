@@ -17,7 +17,7 @@
   ~  under the License.
   -->
 <template name="createContactGroup" xmlns="http://ws.apache.org/ns/synapse">
-    <parameter name="userEmail" description="The user Email ID."/>
+    <parameter name="userEmail" description="Email of the user whose contacts to be queried."/>
     <parameter name="contactId" description="The contact Id which is supposed to delete." />
     <parameter name="title" description="The title of the group."/>
     <parameter name="info" description="The info of the group."/>

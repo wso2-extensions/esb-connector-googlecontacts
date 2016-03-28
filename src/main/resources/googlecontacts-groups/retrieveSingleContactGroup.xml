@@ -17,7 +17,7 @@
   ~  under the License.
   -->
 <template name="retrieveSingleContactGroup" xmlns="http://ws.apache.org/ns/synapse">
-    <parameter name="userEmail" description="user Email ID."/>
+    <parameter name="userEmail" description="Email of the user whose contacts to be queried."/>
     <parameter name="apiUrl" description="The API URL of Google Contacts."/>
     <parameter name="groupID" description="Group Id of single contact group."/>
     <sequence>

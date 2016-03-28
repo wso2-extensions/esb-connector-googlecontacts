@@ -17,13 +17,13 @@
   ~  under the License.
   -->
 <template name="updateContact" xmlns="http://ws.apache.org/ns/synapse">
-    <parameter name="userEmail" description="user Email ID."/>
+    <parameter name="userEmail" description="Email of the user whose contacts to be queried."/>
     <parameter name="contactIdUpdate" description="The contact Id which is supposed to delete." />
-    <parameter name="givenName" description="givenName of the contact."/>
-    <parameter name="familyName" description="familyName of the contact."/>
-    <parameter name="fullName" description="fullName of the contact."/>
-    <parameter name="updated" description="API url"/>
-    <parameter name="otherPhoneNumber" description="API url"/>
+    <parameter name="givenName" description="Given name of the contact."/>
+    <parameter name="familyName" description="Family name of the contact."/>
+    <parameter name="fullName" description="Full name of the contact."/>
+    <parameter name="updated" description="Updated "/>
+    <parameter name="otherPhoneNumber" description="Other phonr number of the contact."/>
     <sequence>
         <property name="uri.var.userEmail" expression="$func:userEmail"/>
         <property name="uri.var.contactId" expression="$func:contactId"/>

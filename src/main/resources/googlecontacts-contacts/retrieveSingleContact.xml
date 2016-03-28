@@ -17,7 +17,7 @@
   ~  under the License.
   -->
 <template name="retrieveSingleContact" xmlns="http://ws.apache.org/ns/synapse">
-    <parameter name="userEmail" description="The user Email ID."/>
+    <parameter name="userEmail" description="Email of the user whose contacts to be queried."/>
     <parameter name="contactId" description="The ID of the contact which needs to be retrieved."/>
     <sequence>
         <property name="uri.var.userEmail" expression="$func:userEmail"/>

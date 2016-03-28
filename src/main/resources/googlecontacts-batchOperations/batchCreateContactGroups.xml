@@ -17,9 +17,11 @@
   ~  under the License.
   -->
 <template name="batchCreateContactGroups" xmlns="http://ws.apache.org/ns/synapse">
-    <parameter name="userEmail" description="User Email ID."/>
-    <parameter name="retrieveContactGroupId" description="The retrieveContactGroupId which is supposed to retrieve."/>
-    <parameter name="deleteContactGroupId" description="The deleteContactGroupId which is supposed to delete."/>
+    <parameter name="userEmail" description="Email of the user whose contacts to be queried."/>
+    <parameter name="retrieveContactGroupId"
+               description="The retrieveContactGroupId which is supposed to retrieve."/>
+    <parameter name="deleteContactGroupId"
+               description="The deleteContactGroupId which is supposed to delete."/>
     <sequence>
         <property name="uri.var.userEmail" expression="$func:userEmail"/>
         <property name="uri.var.retrieveContactGroupId" expression="$func:retrieveContactGroupId"/>
@@ -28,7 +30,6 @@
         <payloadFactory media-type="xml">
             <format>
                 <feed xmlns='http://www.w3.org/2005/Atom'
-                      xmlns:gContact='http://schemas.google.com/contact/2008'
                       xmlns:gd='http://schemas.google.com/g/2005'
                       xmlns:batch='http://schemas.google.com/gdata/batch'>
                     <entry>
@@ -49,16 +50,11 @@
                 <arg expression="$ctx:deleteContactGroupId"/>
             </args>
         </payloadFactory>
-        <script language="js">
-            <![CDATA[
-
-			]]>
-        </script>
         <property name="messageType" value="application/atom+xml" scope="axis2"/>
         <property name="Content-Type" value="application/atom+xml" scope="axis2"/>
         <header name="Content-Type" value="application/atom+xml" scope="transport"/>
         <property action="remove" name="Accept-Encoding" scope="transport"/>
-        <header name="If-None-Match" value="Etag" scope="transport" />
+        <header name="If-None-Match" value="Etag" scope="transport"/>
         <call>
             <endpoint>
                 <http method="post"

@@ -17,9 +17,11 @@
   ~  under the License.
   -->
 <template name="batchCreateContacts" xmlns="http://ws.apache.org/ns/synapse">
-    <parameter name="userEmail" description="User Email ID."/>
-    <parameter name="retrieveContactId" description="The retrieveContactId which is supposed to retrieve."/>
-    <parameter name="deleteContactId" description="The deleteContactId which is supposed to delete."/>
+    <parameter name="userEmail" description="Email of the user whose contacts to be queried."/>
+    <parameter name="retrieveContactId"
+               description="The retrieveContactId which is supposed to retrieve."/>
+    <parameter name="deleteContactId"
+               description="The deleteContactId which is supposed to delete."/>
     <parameter name="fullName" description="The fullName of the contact."/>
     <parameter name="givenName" description="The givenName of the contact."/>
     <parameter name="familyName" description="The familyName of the contact."/>
@@ -37,7 +39,6 @@
         <payloadFactory media-type="xml">
             <format>
                 <feed xmlns='http://www.w3.org/2005/Atom'
-                      xmlns:gContact='http://schemas.google.com/contact/2008'
                       xmlns:gd='http://schemas.google.com/g/2005'
                       xmlns:batch='http://schemas.google.com/gdata/batch'>
                     <entry>
@@ -48,15 +49,17 @@
                     <entry>
                         <batch:id>create</batch:id>
                         <batch:operation type='insert'/>
-                        <category scheme='http://schemas.google.com/g/2005#kind' term='http://schemas.google.com/g/2008#contact'/>
+                        <category scheme='http://schemas.google.com/g/2005#kind'
+                                  term='http://schemas.google.com/g/2008#contact'/>
                         <gd:name>
                             <gd:fullName>$4</gd:fullName>
                             <gd:givenName>$5</gd:givenName>
                             <gd:familyName>$6</gd:familyName>
                         </gd:name>
-                        <gd:email rel='http://schemas.google.com/g/2005#home' address='$7' primary='true'/>
+                        <gd:email rel='http://schemas.google.com/g/2005#home' address='$7'
+                                  primary='true'/>
                     </entry>
-                    <entry >
+                    <entry>
                         <batch:id>delete</batch:id>
                         <batch:operation type='delete'/>
                         <id>https://www.google.com/m8/feeds/contacts/$1/full/$3</id>
@@ -104,7 +107,7 @@
         <property name="Content-Type" value="application/atom+xml" scope="axis2"/>
         <header name="Content-Type" value="application/atom+xml" scope="transport"/>
         <property action="remove" name="Accept-Encoding" scope="transport"/>
-        <header name="If-None-Match" value="Etag" scope="transport" />
+        <header name="If-None-Match" value="Etag" scope="transport"/>
         <call>
             <endpoint>
                 <http method="post"

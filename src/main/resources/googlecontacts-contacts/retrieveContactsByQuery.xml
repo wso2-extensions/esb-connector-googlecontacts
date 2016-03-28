@@ -17,7 +17,7 @@
   ~  under the License.
   -->
 <template name="retrieveContactsByQuery" xmlns="http://ws.apache.org/ns/synapse">
-    <parameter name="userEmail" description="User Email ID."/>
+    <parameter name="userEmail" description="Email of the user whose contacts to be queried."/>
     <parameter name="updatedMin" description="Lower bound on entry update dates."/>
     <parameter name="maxResults" description="Set the maximum number of entries to return."/>
     <parameter name="startIndex" description="Set the 1-based index of the first result to be retrieved (for paging)."/>

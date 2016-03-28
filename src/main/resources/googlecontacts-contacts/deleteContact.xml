@@ -17,7 +17,7 @@
   ~  under the License.
   -->
 <template name="deleteContact" xmlns="http://ws.apache.org/ns/synapse">
-    <parameter name="userEmail" description="User Email ID."/>
+    <parameter name="userEmail" description="Email of the user whose contacts to be queried."/>
     <parameter name="contactId" description="The contact Id which is supposed to delete." />
     <sequence>
         <property name="uri.var.userEmail" expression="$func:userEmail"/>

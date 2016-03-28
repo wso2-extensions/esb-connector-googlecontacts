@@ -17,7 +17,7 @@
   ~  under the License.
   -->
 <template name="retrieveAllContactGroups" xmlns="http://ws.apache.org/ns/synapse">
-    <parameter name="userEmail" description="The user Email ID."/>
+    <parameter name="userEmail" description="Email of the user whose contacts to be queried."/>
     <sequence>
         <property name="uri.var.userEmail" expression="$func:userEmail"/>
         <call>

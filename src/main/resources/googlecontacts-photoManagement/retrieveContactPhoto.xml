@@ -17,7 +17,7 @@
   ~  under the License.
   -->
 <template name="retrieveContactPhoto" xmlns="http://ws.apache.org/ns/synapse">
-    <parameter name="userEmail" description="user Email ID."/>
+    <parameter name="userEmail" description="Email of the user whose contacts to be queried."/>
     <parameter name="contactId" description="Contact Id to retrieve contact photo."/>
     <property action="remove" name="Accept-Encoding" scope="transport"/>
     <sequence>

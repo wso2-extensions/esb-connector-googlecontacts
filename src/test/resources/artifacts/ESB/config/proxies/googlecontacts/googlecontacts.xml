@@ -14,7 +14,6 @@
 			<property name="clientSecret" expression="json-eval($.clientSecret)"/>
 			<property name="refreshToken" expression="json-eval($.refreshToken)"/>
 			<property name="accessTokenRegistryPath" expression="json-eval($.accessTokenRegistryPath)"/>
-
 			<property name="content" expression="json-eval($.content)"/>
 			<property name="givenName" expression="json-eval($.givenName)"/>
 			<property name="familyName" expression="json-eval($.familyName)"/>
@@ -123,18 +122,12 @@
 				<case regex="urn:batchCreateContacts">
 					<googlecontacts.batchCreateContacts>
 						<userEmail>{$ctx:userEmail}</userEmail>
-						<content>{$ctx:content}</content>
 						<givenName>{$ctx:givenName}</givenName>
 						<familyName>{$ctx:familyName}</familyName>
 						<fullName>{$ctx:fullName}</fullName>
 						<retrieveContactId>{$ctx:retrieveContactId}</retrieveContactId>
-						<updateContactId>{$ctx:updateContactId}</updateContactId>
-						<updateGivenName>{$ctx:updateGivenName}</updateGivenName>
-						<updateFamilyName>{$ctx:updateFamilyName}</updateFamilyName>
-						<updateFullName>{$ctx:updateFullName}</updateFullName>
 						<emailAddress>{$ctx:emailAddress}</emailAddress>
 						<deleteContactId>{$ctx:deleteContactId}</deleteContactId>
-						<otherPhoneNumber>{$ctx:otherPhoneNumber}</otherPhoneNumber>
 					</googlecontacts.batchCreateContacts>
 				</case>
 				<case regex="urn:batchCreateContactGroups">

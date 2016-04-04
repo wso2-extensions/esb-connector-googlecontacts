@@ -43,7 +43,7 @@ public class GoogleContactsConnectorIntegrationTest extends ConnectorIntegration
     @BeforeClass(alwaysRun = true)
     public void setEnvironment() throws Exception {
 
-        init("googlecontacts-connector-1.0.1-SNAPSHOT");
+        init("googlecontacts-connector-1.0.0");
 
         esbRequestHeadersMap.put("Accept-Charset", "UTF-8");
         esbRequestHeadersMap.put("Content-Type", "application/json");

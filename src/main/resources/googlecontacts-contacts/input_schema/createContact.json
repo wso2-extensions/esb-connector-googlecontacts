@@ -1,0 +1,68 @@
+{
+  "id": "http:\/\/wso2jsonschema.org",
+  "title": "root",
+  "$schema": "http:\/\/json-schema.org\/draft-04\/schema#",
+  "properties": {
+    "region": {
+      "id": "http:\/\/wso2jsonschema.org\/region",
+      "type": "string"
+    },
+    "homeEmail": {
+      "id": "http:\/\/wso2jsonschema.org\/homeEmail",
+      "type": "string"
+    },
+    "street": {
+      "id": "http:\/\/wso2jsonschema.org\/street",
+      "type": "string"
+    },
+    "familyName": {
+      "id": "http:\/\/wso2jsonschema.org\/familyName",
+      "type": "string"
+    },
+    "userEmail": {
+      "id": "http:\/\/wso2jsonschema.org\/userEmail",
+      "type": "string"
+    },
+    "workPhoneNumber": {
+      "id": "http:\/\/wso2jsonschema.org\/workPhoneNumber",
+      "type": "string"
+    },
+    "givenName": {
+      "id": "http:\/\/wso2jsonschema.org\/givenName",
+      "type": "string"
+    },
+    "homePhoneNumber": {
+      "id": "http:\/\/wso2jsonschema.org\/homePhoneNumber",
+      "type": "string"
+    },
+    "postcode": {
+      "id": "http:\/\/wso2jsonschema.org\/postcode",
+      "type": "string"
+    },
+    "country": {
+      "id": "http:\/\/wso2jsonschema.org\/country",
+      "type": "string"
+    },
+    "workEmail": {
+      "id": "http:\/\/wso2jsonschema.org\/workEmail",
+      "type": "string"
+    },
+    "city": {
+      "id": "http:\/\/wso2jsonschema.org\/city",
+      "type": "string"
+    },
+    "content": {
+      "id": "http:\/\/wso2jsonschema.org\/content",
+      "type": "string"
+    },
+    "formattedAddress": {
+      "id": "http:\/\/wso2jsonschema.org\/formattedAddress",
+      "type": "string"
+    },
+    "fullName": {
+      "id": "http:\/\/wso2jsonschema.org\/fullName",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

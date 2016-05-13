@@ -1,0 +1,114 @@
+{
+  "id": "http:\/\/wso2jsonschema.org",
+  "title": "entry",
+  "$schema": "http:\/\/json-schema.org\/draft-04\/schema#",
+  "properties": {
+    "id": {
+      "id": "http:\/\/wso2jsonschema.org\/id",
+      "type": "string"
+    },
+    "content": {
+      "id": "http:\/\/wso2jsonschema.org\/content",
+      "attributes": {},
+      "properties": {
+        "@type": {
+          "id": "http:\/\/wso2jsonschema.org\/type",
+          "properties": {},
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "category": {
+      "id": "http:\/\/wso2jsonschema.org\/category",
+      "attributes": {},
+      "type": "null"
+    },
+    "title": {
+      "id": "http:\/\/wso2jsonschema.org\/title",
+      "attributes": {},
+      "properties": {
+        "@type": {
+          "id": "http:\/\/wso2jsonschema.org\/type",
+          "properties": {},
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "updated": {
+      "id": "http:\/\/wso2jsonschema.org\/updated",
+      "type": "string"
+    },
+    "gd:extendedProperty": {
+      "id": "http:\/\/wso2jsonschema.org\/gd:extendedProperty",
+      "properties": {
+        "@name": {
+          "id": "http:\/\/wso2jsonschema.org\/gd:extendedProperty\/@name",
+          "properties": {
+            "content": {
+              "id": "http:\/\/wso2jsonschema.org\/gd:extendedProperty\/@name\/content",
+              "type": "string"
+            },
+            "xmlns": {
+              "id": "http:\/\/wso2jsonschema.org\/gd:extendedProperty\/@name\/xmlns",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "#@content": {
+          "id": "http:\/\/wso2jsonschema.org\/gd:extendedProperty\/#@content",
+          "properties": {
+            "xmlns": {
+              "id": "http:\/\/wso2jsonschema.org\/gd:extendedProperty\/#@content\/xmlns",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "info": {
+          "id": "http:\/\/wso2jsonschema.org\/gd:extendedProperty\/info",
+          "properties": {
+            "xmlns": {
+              "id": "http:\/\/wso2jsonschema.org\/gd:extendedProperty\/info\/xmlns",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "link": {
+      "id": "http:\/\/wso2jsonschema.org\/link",
+      "items": [
+        {
+          "id": "http:\/\/wso2jsonschema.org\/link\/link",
+          "attributes": {},
+          "type": "null"
+        }
+      ],
+      "type": "array"
+    },
+    "xmlns": {
+      "id": "http:\/\/wso2jsonschema.org\/xmlns",
+      "type": "string"
+    }
+  },
+  "type": "object",
+  "namespaces": [
+    {
+      "prefix": "batch",
+      "url": "http:\/\/schemas.google.com\/gdata\/batch"
+    },
+    {
+      "prefix": "gContact",
+      "url": "http:\/\/schemas.google.com\/contact\/2008"
+    },
+    {
+      "prefix": "gd",
+      "url": "http:\/\/schemas.google.com\/g\/2005"
+    }
+  ]
+}

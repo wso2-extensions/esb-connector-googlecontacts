@@ -49,9 +49,7 @@
         <call>
             <endpoint>
                 <http method="post"
-                      uri-template="https://www.googleapis.com/oauth2/v3/token?grant_type=refresh_token
-                      &amp;client_id={+uri.var.clientId}&amp;client_secret={+uri.var.clientSecret}
-                      &amp;refresh_token={+uri.var.refreshToken}"/>
+                      uri-template="https://www.googleapis.com/oauth2/v3/token?grant_type=refresh_token&amp;client_id={+uri.var.clientId}&amp;client_secret={+uri.var.clientSecret}&amp;refresh_token={+uri.var.refreshToken}"/>
             </endpoint>
         </call>
         <!-- Setting the new access token to the property. -->

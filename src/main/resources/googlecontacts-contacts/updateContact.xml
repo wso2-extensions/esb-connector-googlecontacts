@@ -18,7 +18,7 @@
   -->
 <template name="updateContact" xmlns="http://ws.apache.org/ns/synapse">
     <parameter name="userEmail" description="Email of the user whose contacts to be queried."/>
-    <parameter name="contactIdUpdate" description="The contact Id which is supposed to delete." />
+    <parameter name="contactIdUpdate" description="The contact Id which is supposed to delete."/>
     <parameter name="givenName" description="Given name of the contact."/>
     <parameter name="familyName" description="Family name of the contact."/>
     <parameter name="fullName" description="Full name of the contact."/>
@@ -26,7 +26,6 @@
     <parameter name="otherPhoneNumber" description="Other phone number of the contact."/>
     <sequence>
         <property name="uri.var.userEmail" expression="$func:userEmail"/>
-        <property name="uri.var.contactId" expression="$func:contactId"/>
         <property name="uri.var.contactIdUpdate" expression="$func:contactIdUpdate"/>
         <property name="uri.var.updated" expression="$func:updated"/>
         <property name="uri.var.givenName" expression="$func:givenName"/>
@@ -54,8 +53,8 @@
                           href="https://www.google.com/m8/feeds/contacts/$1/full/$2"/>
                     <link rel="edit" type="application/atom+xml"
                           href="https://www.google.com/m8/feeds/contacts/$1/full/$2"/>
-                    <gd:phoneNumber rel="http://schemas.google.com/g/2005#other"
-                                    primary="true">$8</gd:phoneNumber>
+                    <gd:phoneNumber rel="http://schemas.google.com/g/2005#other" primary="true">
+                        $8</gd:phoneNumber>
                     <gd:extendedProperty name="pet" value="hamster"/>
                 </entry>
             </format>
@@ -116,7 +115,7 @@
         <property name="Content-Type" value="application/atom+xml" scope="axis2"/>
         <header name="Content-Type" value="application/atom+xml" scope="transport"/>
         <property action="remove" name="Accept-Encoding" scope="transport"/>
-        <header name="If-None-Match" value="Etag" scope="transport" />
+        <header name="If-None-Match" value="Etag" scope="transport"/>
         <call>
             <endpoint>
                 <http method="put"

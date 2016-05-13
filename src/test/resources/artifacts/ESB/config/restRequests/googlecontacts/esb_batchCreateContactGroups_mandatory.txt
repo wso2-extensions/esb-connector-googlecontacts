@@ -3,6 +3,6 @@
 "apiUrl": "%s(apiUrl)",
 "apiVersion": "%s(apiVersion)",
 "userEmail": "%s(userEmail)",
-"retrieveContactGroupId": "invalid",
-"deleteContactGroupId":"invalid"
+"retrieveContactGroupId": "%s(retrieveContactGroupId)",
+"deleteContactGroupId":"%s(deleteContactGroupId)"
 }

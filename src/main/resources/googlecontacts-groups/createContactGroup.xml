@@ -18,12 +18,10 @@
   -->
 <template name="createContactGroup" xmlns="http://ws.apache.org/ns/synapse">
     <parameter name="userEmail" description="Email of the user whose contacts to be queried."/>
-    <parameter name="contactId" description="The contact Id which is supposed to delete." />
     <parameter name="title" description="The title of the group."/>
     <parameter name="info" description="The info of the group."/>
     <sequence>
         <property name="uri.var.userEmail" expression="$func:userEmail"/>
-        <property name="uri.var.contactId" expression="$func:contactId"/>
         <property name="uri.var.title" expression="$func:title"/>
         <property name="uri.var.info" expression="$func:info"/>
         <property action="remove" name="Accept-Encoding" scope="transport"/>
@@ -69,7 +67,7 @@
         <property name="Content-Type" value="application/atom+xml" scope="axis2"/>
         <header name="Content-Type" value="application/atom+xml" scope="transport"/>
         <property action="remove" name="Accept-Encoding" scope="transport"/>
-        <header name="If-None-Match" value="Etag" scope="transport" />
+        <header name="If-None-Match" value="Etag" scope="transport"/>
         <call>
             <endpoint>
                 <http method="post"

@@ -1,0 +1,172 @@
+{
+  "id": "http:\/\/wso2jsonschema.org",
+  "title": "feed",
+  "$schema": "http:\/\/json-schema.org\/draft-04\/schema#",
+  "properties": {
+    "id": {
+      "id": "http:\/\/wso2jsonschema.org\/id",
+      "type": "string"
+    },
+    "author": {
+      "id": "http:\/\/wso2jsonschema.org\/author",
+      "properties": {
+        "email": {
+          "id": "http:\/\/wso2jsonschema.org\/author\/email",
+          "type": "string"
+        },
+        "name": {
+          "id": "http:\/\/wso2jsonschema.org\/author\/name",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "title": {
+      "id": "http:\/\/wso2jsonschema.org\/title",
+      "attributes": {},
+      "properties": {
+        "@type": {
+          "id": "http:\/\/wso2jsonschema.org\/type",
+          "properties": {},
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "category": {
+      "id": "http:\/\/wso2jsonschema.org\/category",
+      "attributes": {},
+      "type": "null"
+    },
+    "updated": {
+      "id": "http:\/\/wso2jsonschema.org\/updated",
+      "type": "string"
+    },
+    "entry": {
+      "id": "http:\/\/wso2jsonschema.org\/entry",
+      "items": [
+        {
+          "id": "http:\/\/wso2jsonschema.org\/entry\/0",
+          "properties": {
+            "id": {
+              "id": "http:\/\/wso2jsonschema.org\/entry\/0\/id",
+              "type": "string"
+            },
+            "category": {
+              "id": "http:\/\/wso2jsonschema.org\/entry\/0\/category",
+              "attributes": {},
+              "type": "null"
+            },
+            "title": {
+              "id": "http:\/\/wso2jsonschema.org\/entry\/0\/title",
+              "attributes": {},
+              "type": "null"
+            },
+            "gd:email": {
+              "id": "http:\/\/wso2jsonschema.org\/entry\/0\/gd:email",
+              "items": [
+                {
+                  "id": "http:\/\/wso2jsonschema.org\/entry\/0\/gd:email\/gd:email",
+                  "attributes": {},
+                  "type": "null"
+                }
+              ],
+              "type": "array"
+            },
+            "updated": {
+              "id": "http:\/\/wso2jsonschema.org\/entry\/0\/updated",
+              "type": "string"
+            },
+            "link": {
+              "id": "http:\/\/wso2jsonschema.org\/entry\/0\/link",
+              "items": [
+                {
+                  "id": "http:\/\/wso2jsonschema.org\/entry\/0\/link\/link",
+                  "attributes": {},
+                  "type": "null"
+                }
+              ],
+              "type": "array"
+            },
+            "gd:phoneNumber": {
+              "id": "http:\/\/wso2jsonschema.org\/entry\/0\/gd:phoneNumber",
+              "items": [
+                {
+                  "id": "http:\/\/wso2jsonschema.org\/entry\/0\/gd:phoneNumber\/gd:phoneNumber",
+                  "attributes": {},
+                  "type": "object"
+                }
+              ],
+              "type": "array"
+            }
+          },
+          "type": "object"
+        }
+      ],
+      "type": "array"
+    },
+    "link": {
+      "id": "http:\/\/wso2jsonschema.org\/link",
+      "items": [
+        {
+          "id": "http:\/\/wso2jsonschema.org\/link\/link",
+          "attributes": {},
+          "type": "null"
+        }
+      ],
+      "type": "array"
+    },
+    "generator": {
+      "id": "http:\/\/wso2jsonschema.org\/generator",
+      "attributes": {},
+      "properties": {
+        "@uri": {
+          "id": "http:\/\/wso2jsonschema.org\/uri",
+          "properties": {},
+          "type": "object"
+        },
+        "@version": {
+          "id": "http:\/\/wso2jsonschema.org\/version",
+          "properties": {},
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "xmlns": {
+      "id": "http:\/\/wso2jsonschema.org\/xmlns",
+      "type": "string"
+    },
+    "openSearch:totalResults": {
+      "id": "http:\/\/wso2jsonschema.org\/openSearch:totalResults",
+      "type": "number"
+    },
+    "openSearch:startIndex": {
+      "id": "http:\/\/wso2jsonschema.org\/openSearch:startIndex",
+      "type": "number"
+    },
+    "openSearch:itemsPerPage": {
+      "id": "http:\/\/wso2jsonschema.org\/openSearch:itemsPerPage",
+      "type": "number"
+    }
+  },
+  "type": "object",
+  "namespaces": [
+    {
+      "prefix": "batch",
+      "url": "http:\/\/schemas.google.com\/gdata\/batch"
+    },
+    {
+      "prefix": "gd",
+      "url": "http:\/\/schemas.google.com\/g\/2005"
+    },
+    {
+      "prefix": "gContact",
+      "url": "http:\/\/schemas.google.com\/contact\/2008"
+    },
+    {
+      "prefix": "openSearch",
+      "url": "http:\/\/a9.com\/-\/spec\/opensearchrss\/1.0\/"
+    }
+  ]
+}

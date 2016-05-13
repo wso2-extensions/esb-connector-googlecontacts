@@ -68,8 +68,7 @@
                         $7
                     </gd:phoneNumber>
                     <gd:phoneNumber rel="http://schemas.google.com/g/2005#home">$8</gd:phoneNumber>
-                    <gd:structuredPostalAddress rel="http://schemas.google.com/g/2005#work"
-                            primary="true">
+                    <gd:structuredPostalAddress rel="http://schemas.google.com/g/2005#work" primary="true">
                         <gd:city>$9</gd:city>
                         <gd:street>$10</gd:street>
                         <gd:region>$11</gd:region>

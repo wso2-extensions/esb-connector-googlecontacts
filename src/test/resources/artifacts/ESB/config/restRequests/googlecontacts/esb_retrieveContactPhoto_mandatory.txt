@@ -3,5 +3,5 @@
 "apiUrl": "%s(apiUrl)",
 "apiVersion": "%s(apiVersion)",
 "userEmail": "%s(userEmail)",
-"contactId": "%s(contactId)"
+"contactIdPhoto": "%s(contactIdPhoto)"
 }

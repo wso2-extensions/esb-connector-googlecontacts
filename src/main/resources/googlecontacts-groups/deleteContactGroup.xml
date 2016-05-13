@@ -23,7 +23,7 @@
         <property name="uri.var.userEmail" expression="$func:userEmail"/>
         <property name="uri.var.groupID" expression="$func:groupID"/>
         <property action="remove" name="Accept-Encoding" scope="transport"/>
-        <header name="If-None-Match" value="Etag" scope="transport" />
+        <header name="If-None-Match" value="Etag" scope="transport"/>
         <call>
             <endpoint>
                 <http method="delete"

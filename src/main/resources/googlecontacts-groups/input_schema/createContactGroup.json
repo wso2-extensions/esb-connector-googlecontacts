@@ -1,0 +1,20 @@
+{
+  "id": "http:\/\/wso2jsonschema.org",
+  "title": "root",
+  "$schema": "http:\/\/json-schema.org\/draft-04\/schema#",
+  "properties": {
+    "title": {
+      "id": "http:\/\/wso2jsonschema.org\/title",
+      "type": "string"
+    },
+    "userEmail": {
+      "id": "http:\/\/wso2jsonschema.org\/userEmail",
+      "type": "string"
+    },
+    "info": {
+      "id": "http:\/\/wso2jsonschema.org\/info",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

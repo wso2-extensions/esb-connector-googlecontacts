@@ -21,8 +21,8 @@
     <sequence>
         <property name="uri.var.userEmail" expression="$func:userEmail"/>
         <!-- Remove these headers if it is set -->
-        <header name="If-None-Match" action="remove" scope="transport" />
-        <header name="If-Match" action="remove" scope="transport" />
+        <header name="If-None-Match" action="remove" scope="transport"/>
+        <header name="If-Match" action="remove" scope="transport"/>
         <call>
             <endpoint>
                 <http method="get"

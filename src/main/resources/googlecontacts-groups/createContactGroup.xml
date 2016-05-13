@@ -67,7 +67,7 @@
         <property name="Content-Type" value="application/atom+xml" scope="axis2"/>
         <header name="Content-Type" value="application/atom+xml" scope="transport"/>
         <property action="remove" name="Accept-Encoding" scope="transport"/>
-        <header name="If-None-Match" value="Etag" scope="transport" />
+        <header name="If-None-Match" value="Etag" scope="transport"/>
         <call>
             <endpoint>
                 <http method="post"

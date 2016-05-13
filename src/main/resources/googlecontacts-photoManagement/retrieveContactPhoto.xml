@@ -18,16 +18,16 @@
   -->
 <template name="retrieveContactPhoto" xmlns="http://ws.apache.org/ns/synapse">
     <parameter name="userEmail" description="Email of the user whose contacts to be queried."/>
-    <parameter name="contactId" description="Contact Id to retrieve contact photo."/>
+    <parameter name="contactIdPhoto" description="Contact Id to retrieve contact photo."/>
     <property action="remove" name="Accept-Encoding" scope="transport"/>
     <sequence>
-        <property name="uri.var.contactId" expression="$func:contactId"/>
+        <property name="uri.var.contactIdPhoto" expression="$func:contactIdPhoto"/>
         <property name="uri.var.userEmail" expression="$func:userEmail"/>
-        <header name="If-None-Match" value="Etag" scope="transport" />
+        <header name="If-None-Match" value="Etag" scope="transport"/>
         <call>
             <endpoint>
                 <http method="get"
-                      uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/feeds/photos/media/{uri.var.userEmail}/{uri.var.contactId}"/>
+                      uri-template="{uri.var.apiUrl}/{uri.var.apiVersion}/feeds/photos/media/{uri.var.userEmail}/{uri.var.contactIdPhoto}"/>
             </endpoint>
         </call>
         <!-- Remove response custom header information -->

@@ -1,0 +1,77 @@
+{
+  "id": "http:\/\/wso2jsonschema.org",
+  "title": "feed",
+  "$schema": "http:\/\/json-schema.org\/draft-04\/schema#",
+  "properties": {
+    "id": {
+      "id": "http:\/\/wso2jsonschema.org\/id",
+      "type": "string"
+    },
+    "title": {
+      "id": "http:\/\/wso2jsonschema.org\/title",
+      "attributes": {},
+      "properties": {
+        "@type": {
+          "id": "http:\/\/wso2jsonschema.org\/type",
+          "properties": {},
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "updated": {
+      "id": "http:\/\/wso2jsonschema.org\/updated",
+      "type": "string"
+    },
+    "entry": {
+      "id": "http:\/\/wso2jsonschema.org\/entry",
+      "items": [
+        {
+          "id": "http:\/\/wso2jsonschema.org\/entry\/0",
+          "properties": {
+            "batch:status": {
+              "id": "http:\/\/wso2jsonschema.org\/entry\/0\/batch:status",
+              "attributes": {},
+              "type": "null"
+            },
+            "category": {
+              "id": "http:\/\/wso2jsonschema.org\/entry\/0\/category",
+              "attributes": {},
+              "type": "null"
+            },
+            "batch:operation": {
+              "id": "http:\/\/wso2jsonschema.org\/entry\/0\/batch:operation",
+              "attributes": {},
+              "type": "null"
+            },
+            "batch:id": {
+              "id": "http:\/\/wso2jsonschema.org\/entry\/0\/batch:id",
+              "type": "string"
+            }
+          },
+          "type": "object"
+        }
+      ],
+      "type": "array"
+    },
+    "xmlns": {
+      "id": "http:\/\/wso2jsonschema.org\/xmlns",
+      "type": "string"
+    }
+  },
+  "type": "object",
+  "namespaces": [
+    {
+      "prefix": "batch",
+      "url": "http:\/\/schemas.google.com\/gdata\/batch"
+    },
+    {
+      "prefix": "gContact",
+      "url": "http:\/\/schemas.google.com\/contact\/2008"
+    },
+    {
+      "prefix": "gd",
+      "url": "http:\/\/schemas.google.com\/g\/2005"
+    }
+  ]
+}

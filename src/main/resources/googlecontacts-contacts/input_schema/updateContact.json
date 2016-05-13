@@ -1,0 +1,40 @@
+{
+  "id": "http:\/\/wso2jsonschema.org",
+  "title": "root",
+  "$schema": "http:\/\/json-schema.org\/draft-04\/schema#",
+  "properties": {
+    "content": {
+      "id": "http:\/\/wso2jsonschema.org\/content",
+      "type": "string"
+    },
+    "updated": {
+      "id": "http:\/\/wso2jsonschema.org\/updated",
+      "type": "string"
+    },
+    "familyName": {
+      "id": "http:\/\/wso2jsonschema.org\/familyName",
+      "type": "string"
+    },
+    "contactIdUpdate": {
+      "id": "http:\/\/wso2jsonschema.org\/contactIdUpdate",
+      "type": "string"
+    },
+    "userEmail": {
+      "id": "http:\/\/wso2jsonschema.org\/userEmail",
+      "type": "string"
+    },
+    "fullName": {
+      "id": "http:\/\/wso2jsonschema.org\/fullName",
+      "type": "string"
+    },
+    "givenName": {
+      "id": "http:\/\/wso2jsonschema.org\/givenName",
+      "type": "string"
+    },
+    "otherPhoneNumber": {
+      "id": "http:\/\/wso2jsonschema.org\/otherPhoneNumber",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

@@ -1,0 +1,40 @@
+{
+  "id": "http:\/\/wso2jsonschema.org",
+  "title": "root",
+  "$schema": "http:\/\/json-schema.org\/draft-04\/schema#",
+  "properties": {
+    "startIndex": {
+      "id": "http:\/\/wso2jsonschema.org\/startIndex",
+      "type": "string"
+    },
+    "sortorder": {
+      "id": "http:\/\/wso2jsonschema.org\/sortorder",
+      "type": "string"
+    },
+    "showdeleted": {
+      "id": "http:\/\/wso2jsonschema.org\/showdeleted",
+      "type": "string"
+    },
+    "orderby": {
+      "id": "http:\/\/wso2jsonschema.org\/orderby",
+      "type": "string"
+    },
+    "userEmail": {
+      "id": "http:\/\/wso2jsonschema.org\/userEmail",
+      "type": "string"
+    },
+    "group": {
+      "id": "http:\/\/wso2jsonschema.org\/group",
+      "type": "string"
+    },
+    "maxResults": {
+      "id": "http:\/\/wso2jsonschema.org\/maxResults",
+      "type": "number"
+    },
+    "updatedMin": {
+      "id": "http:\/\/wso2jsonschema.org\/updatedMin",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

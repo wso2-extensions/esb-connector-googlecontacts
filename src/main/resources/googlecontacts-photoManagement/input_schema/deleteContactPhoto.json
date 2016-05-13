@@ -1,0 +1,16 @@
+{
+  "id": "http:\/\/wso2jsonschema.org",
+  "title": "root",
+  "$schema": "http:\/\/json-schema.org\/draft-04\/schema#",
+  "properties": {
+    "contactIdPhoto": {
+      "id": "http:\/\/wso2jsonschema.org\/contactIdPhoto",
+      "type": "string"
+    },
+    "userEmail": {
+      "id": "http:\/\/wso2jsonschema.org\/userEmail",
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

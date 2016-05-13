@@ -70,7 +70,7 @@ public class GoogleContactsConnectorIntegrationTest extends ConnectorIntegration
         esbRequestHeadersMap.put("Action", "urn:retrieveAllContacts");
         RestResponse<OMElement> esbRestResponse =
                 sendXmlRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_retrieveAllContacts_mandatory.txt");
-        String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/"+connectorProperties.getProperty("apiVersion")+ "/feeds/contacts/" + connectorProperties.getProperty("userEmail") + "/full";
+        String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/" + connectorProperties.getProperty("apiVersion") + "/feeds/contacts/" + connectorProperties.getProperty("userEmail") + "/full";
         RestResponse<OMElement> apiRestResponse = sendXmlRestRequest(apiEndPoint, "GET", apiRequestHeadersMap);
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
@@ -85,7 +85,7 @@ public class GoogleContactsConnectorIntegrationTest extends ConnectorIntegration
     public void testRetrieveSingleContactWithMandatoryParameters() throws Exception {
 
         esbRequestHeadersMap.put("Action", "urn:retrieveSingleContact");
-        String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/"+connectorProperties.getProperty("apiVersion")+ "/feeds/contacts/" + connectorProperties.getProperty("userEmail") + "/full/" + connectorProperties.getProperty("contactId");
+        String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/" + connectorProperties.getProperty("apiVersion") + "/feeds/contacts/" + connectorProperties.getProperty("userEmail") + "/full/" + connectorProperties.getProperty("contactId");
 
         RestResponse<JSONObject> esbRestResponse = sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_retrieveSingleContact_mandatory.txt");
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndPoint, "GET", apiRequestHeadersMap);
@@ -101,7 +101,7 @@ public class GoogleContactsConnectorIntegrationTest extends ConnectorIntegration
     public void testRetrieveSingleContactWithNegativeParameters() throws Exception {
 
         esbRequestHeadersMap.put("Action", "urn:retrieveSingleContact");
-        String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/"+connectorProperties.getProperty("apiVersion")+ "/feeds/contacts/" + connectorProperties.getProperty("userEmail") + "/full/" + connectorProperties.getProperty("invalid");
+        String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/" + connectorProperties.getProperty("apiVersion") + "/feeds/contacts/" + connectorProperties.getProperty("userEmail") + "/full/" + connectorProperties.getProperty("invalid");
 
         RestResponse<JSONObject> esbRestResponse = sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_retrieveSingleContact_negative.txt");
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndPoint, "GET", apiRequestHeadersMap);
@@ -119,7 +119,7 @@ public class GoogleContactsConnectorIntegrationTest extends ConnectorIntegration
         esbRequestHeadersMap.put("Action", "urn:retrieveContactsByQuery");
         RestResponse<OMElement> esbRestResponse =
                 sendXmlRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_retrieveContactsByQuery_mandatory.txt");
-        String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/"+connectorProperties.getProperty("apiVersion")+ "/feeds/contacts/" + connectorProperties.getProperty("userEmail") + "/full?" + "max-results=" + connectorProperties.getProperty("maxResults");
+        String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/" + connectorProperties.getProperty("apiVersion") + "/feeds/contacts/" + connectorProperties.getProperty("userEmail") + "/full?" + "max-results=" + connectorProperties.getProperty("maxResults");
         RestResponse<OMElement> apiRestResponse = sendXmlRestRequest(apiEndPoint, "GET", apiRequestHeadersMap);
 
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
@@ -133,7 +133,7 @@ public class GoogleContactsConnectorIntegrationTest extends ConnectorIntegration
     public void testRetrieveAllContactGroupsWithMandatoryParameters() throws Exception {
 
         esbRequestHeadersMap.put("Action", "urn:retrieveAllContactGroups");
-        String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/"+connectorProperties.getProperty("apiVersion")+"/feeds/groups/" + connectorProperties.getProperty("userEmail") + "/full";
+        String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/" + connectorProperties.getProperty("apiVersion") + "/feeds/groups/" + connectorProperties.getProperty("userEmail") + "/full";
 
         RestResponse<JSONObject> esbRestResponse = sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_retrieveAllContactGroups_mandatory.txt");
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndPoint, "GET", apiRequestHeadersMap);
@@ -149,7 +149,7 @@ public class GoogleContactsConnectorIntegrationTest extends ConnectorIntegration
     public void testRetrieveContactGroupsByQueryWithMandatoryParameters() throws Exception {
 
         esbRequestHeadersMap.put("Action", "urn:retrieveContactGroupsByQuery");
-        String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/"+connectorProperties.getProperty("apiVersion")+ "/feeds/groups/" + connectorProperties.getProperty("userEmail") + "/full?updated-min=" + connectorProperties.getProperty("updatedMin");
+        String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/" + connectorProperties.getProperty("apiVersion") + "/feeds/groups/" + connectorProperties.getProperty("userEmail") + "/full?updated-min=" + connectorProperties.getProperty("updatedMin");
 
         RestResponse<JSONObject> esbRestResponse = sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_retrieveContactGroupsByQuery_mandatory.txt");
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndPoint, "GET", apiRequestHeadersMap);
@@ -165,7 +165,7 @@ public class GoogleContactsConnectorIntegrationTest extends ConnectorIntegration
     public void testRetrieveSingleContactGroupWithMandatoryParameters() throws Exception {
 
         esbRequestHeadersMap.put("Action", "urn:retrieveSingleContactGroup");
-        String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/"+connectorProperties.getProperty("apiVersion")+"/feeds/groups/" + connectorProperties.getProperty("userEmail") + "/full/" + connectorProperties.getProperty("groupID");
+        String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/" + connectorProperties.getProperty("apiVersion") + "/feeds/groups/" + connectorProperties.getProperty("userEmail") + "/full/" + connectorProperties.getProperty("groupID");
 
         RestResponse<JSONObject> esbRestResponse = sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_retrieveSingleContactGroup_mandatory.txt");
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndPoint, "GET", apiRequestHeadersMap);
@@ -181,7 +181,7 @@ public class GoogleContactsConnectorIntegrationTest extends ConnectorIntegration
     public void testDeleteContactWithMandatoryParameters() throws Exception {
 
         esbRequestHeadersMap.put("Action", "urn:deleteContact");
-        String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/"+connectorProperties.getProperty("apiVersion")+"/feeds/contacts/" + connectorProperties.getProperty("userEmail") + "/full/" + connectorProperties.getProperty("contactId");
+        String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/" + connectorProperties.getProperty("apiVersion") + "/feeds/contacts/" + connectorProperties.getProperty("userEmail") + "/full/" + connectorProperties.getProperty("contactId");
 
         RestResponse<JSONObject> esbRestResponse = sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_deleteContact_mandatory.txt");
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndPoint, "GET", apiRequestHeadersMap);
@@ -197,7 +197,7 @@ public class GoogleContactsConnectorIntegrationTest extends ConnectorIntegration
     public void testDeleteContactWithNegativeParameters() throws Exception {
 
         esbRequestHeadersMap.put("Action", "urn:deleteContact");
-        String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/"+connectorProperties.getProperty("apiVersion")+ "/feeds/contacts/" + connectorProperties.getProperty("userEmail") + "/full/" + connectorProperties.getProperty("invalid");
+        String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/" + connectorProperties.getProperty("apiVersion") + "/feeds/contacts/" + connectorProperties.getProperty("userEmail") + "/full/" + connectorProperties.getProperty("invalid");
 
         RestResponse<JSONObject> esbRestResponse = sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_deleteContact_negative.txt");
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndPoint, "GET", apiRequestHeadersMap);
@@ -213,7 +213,7 @@ public class GoogleContactsConnectorIntegrationTest extends ConnectorIntegration
     public void testRetrieveContactPhotoWithMandatoryParameters() throws Exception {
 
         esbRequestHeadersMap.put("Action", "urn:retrieveContactPhoto");
-        String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/"+connectorProperties.getProperty("apiVersion")+ "/feeds/photos/media/" + connectorProperties.getProperty("userEmail") + "/" + connectorProperties.getProperty("contactId");
+        String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/" + connectorProperties.getProperty("apiVersion") + "/feeds/photos/media/" + connectorProperties.getProperty("userEmail") + "/" + connectorProperties.getProperty("contactId");
 
         RestResponse<JSONObject> esbRestResponse = sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_retrieveContactPhoto_mandatory.txt");
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndPoint, "GET", apiRequestHeadersMap);
@@ -229,7 +229,7 @@ public class GoogleContactsConnectorIntegrationTest extends ConnectorIntegration
     public void testRetrieveContactPhotoWithNegativeParameters() throws Exception {
 
         esbRequestHeadersMap.put("Action", "urn:retrieveContactPhoto");
-        String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/"+connectorProperties.getProperty("apiVersion")+ "/feeds/photos/media/" + connectorProperties.getProperty("userEmail") + "/6c6c74e78a43a3dc";
+        String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/" + connectorProperties.getProperty("apiVersion") + "/feeds/photos/media/" + connectorProperties.getProperty("userEmail") + "/6c6c74e78a43a3dc";
 
         RestResponse<JSONObject> esbRestResponse = sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_retrieveContactPhoto_negative.txt");
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndPoint, "GET", apiRequestHeadersMap);
@@ -245,7 +245,7 @@ public class GoogleContactsConnectorIntegrationTest extends ConnectorIntegration
     public void testDeleteContactGroupWithMandatoryParameters() throws Exception {
 
         esbRequestHeadersMap.put("Action", "urn:deleteContactGroup");
-       String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/"+connectorProperties.getProperty("apiVersion")+"/feeds/groups/" + connectorProperties.getProperty("userEmail") + "/full/" + connectorProperties.getProperty("groupID");
+        String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/" + connectorProperties.getProperty("apiVersion") + "/feeds/groups/" + connectorProperties.getProperty("userEmail") + "/full/" + connectorProperties.getProperty("groupID");
 
         RestResponse<JSONObject> esbRestResponse = sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_deleteContactGroup_mandatory.txt");
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndPoint, "DELETE", apiRequestHeadersMap);
@@ -262,7 +262,7 @@ public class GoogleContactsConnectorIntegrationTest extends ConnectorIntegration
 
         esbRequestHeadersMap.put("Action", "urn:deleteContactPhoto");
         //String apiEndPoint = "https://www.googleapis.com/calendar/v3/calendars/" + parametersMap.get("calendarId") + "/acl/" + parametersMap.get("ruleId");
-        String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/"+connectorProperties.getProperty("apiVersion")+"/feeds/photos/media/" + connectorProperties.getProperty("userEmail") + "/" + connectorProperties.getProperty("contactId");
+        String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/" + connectorProperties.getProperty("apiVersion") + "/feeds/photos/media/" + connectorProperties.getProperty("userEmail") + "/" + connectorProperties.getProperty("contactId");
 
         RestResponse<JSONObject> esbRestResponse = sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_deleteContactPhoto_mandatory.txt");
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndPoint, "DELETE", apiRequestHeadersMap);
@@ -278,7 +278,7 @@ public class GoogleContactsConnectorIntegrationTest extends ConnectorIntegration
     public void testDeleteContactPhotoWithNegativeParameters() throws Exception {
 
         esbRequestHeadersMap.put("Action", "urn:deleteContactPhoto");
-       String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/"+connectorProperties.getProperty("apiVersion")+"/feeds/photos/media/" + connectorProperties.getProperty("userEmail") + "/6c6c74e78a43a3dcwewewewrwerwerewr";
+        String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/" + connectorProperties.getProperty("apiVersion") + "/feeds/photos/media/" + connectorProperties.getProperty("userEmail") + "/6c6c74e78a43a3dcwewewewrwerwerewr";
 
         RestResponse<JSONObject> esbRestResponse = sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_deleteContactPhoto_negative.txt");
         RestResponse<JSONObject> apiRestResponse = sendJsonRestRequest(apiEndPoint, "DELETE", apiRequestHeadersMap);
@@ -288,8 +288,8 @@ public class GoogleContactsConnectorIntegrationTest extends ConnectorIntegration
     }
 
     /**
-      * Positive test case for createContact method with mandatory parameters.
-      */
+     * Positive test case for createContact method with mandatory parameters.
+     */
     @Test(description = "googlecontacts {createContact} integration test with mandatory parameters.")
     public void testCreateContactWithMandatoryParameters() throws IOException, XMLStreamException,
             XPathExpressionException, SAXException, ParserConfigurationException {
@@ -300,8 +300,8 @@ public class GoogleContactsConnectorIntegrationTest extends ConnectorIntegration
     }
 
     /**
-      * Negative test case for createContact method with mandatory parameters.
-      */
+     * Negative test case for createContact method with mandatory parameters.
+     */
 //    @Test(priority = 1, description = "googlecontacts {createContact} integration test with negative parameters.")
 //    public void testCreateContactWithNegativeParameters() throws IOException, XMLStreamException,
 //            XPathExpressionException, SAXException, ParserConfigurationException {
@@ -312,8 +312,8 @@ public class GoogleContactsConnectorIntegrationTest extends ConnectorIntegration
 //    }
 
     /**
-      * Positive test case for createContactGroup method with mandatory parameters.
-      */
+     * Positive test case for createContactGroup method with mandatory parameters.
+     */
     @Test(priority = 1, description = "googlecontacts {createContactGroup} integration test with mandatory parameters.")
     public void testCreateContactGroupWithMandatoryParameters() throws IOException, XMLStreamException,
             XPathExpressionException, SAXException, ParserConfigurationException {
@@ -325,8 +325,8 @@ public class GoogleContactsConnectorIntegrationTest extends ConnectorIntegration
     }
 
     /**
-      * Positive test case for createContactGroup method with negative parameters.
-      */
+     * Positive test case for createContactGroup method with negative parameters.
+     */
     @Test(priority = 1, description = "googlecontacts {createContactGroup} integration test with negative parameters.")
     public void testCreateContactGroupWithNegativeParameters() throws IOException, XMLStreamException,
             XPathExpressionException, SAXException, ParserConfigurationException {
@@ -338,8 +338,8 @@ public class GoogleContactsConnectorIntegrationTest extends ConnectorIntegration
     }
 
     /**
-      * Positive test case for batchCreateContacts method with mandatory parameters.
-      */
+     * Positive test case for batchCreateContacts method with mandatory parameters.
+     */
     @Test(description = "googlecontacts {batchCreateContacts} integration test with mandatory parameters.")
     public void testBatchCreateContactsWithMandatoryParameters() throws IOException, XMLStreamException,
             XPathExpressionException, SAXException, ParserConfigurationException {
@@ -351,15 +351,15 @@ public class GoogleContactsConnectorIntegrationTest extends ConnectorIntegration
     }
 
     /**
-      * Positive test case for updateContact method with mandatory parameters.
-      */
+     * Positive test case for updateContact method with mandatory parameters.
+     */
     @Test(priority = 1, description = "googlecontacts {updateContact} integration test with mandatory parameters.")
     public void testUpdateContactWithMandatoryParameters() throws IOException, XMLStreamException,
             XPathExpressionException, SAXException, ParserConfigurationException {
         esbRequestHeadersMap.put("Action", "urn:updateContact");
         RestResponse<OMElement> esbRestResponse =
                 sendXmlRestRequest(proxyUrl, "POST", esbRequestHeadersMap, "esb_updateContact_mandatory.txt");
-        String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/"+connectorProperties.getProperty("apiVersion")+"/feeds/contacts/" + connectorProperties.getProperty("userEmail") + "/full/" + connectorProperties.getProperty("contactIdUpdate");
+        String apiEndPoint = connectorProperties.getProperty("apiUrl") + "/" + connectorProperties.getProperty("apiVersion") + "/feeds/contacts/" + connectorProperties.getProperty("userEmail") + "/full/" + connectorProperties.getProperty("contactIdUpdate");
         RestResponse<OMElement> apiRestResponse = sendXmlRestRequest(apiEndPoint, "GET", apiRequestHeadersMap);
         Assert.assertEquals(esbRestResponse.getHttpStatusCode(), 200);
         Assert.assertEquals(apiRestResponse.getHttpStatusCode(), 200);

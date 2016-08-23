@@ -24,5 +24,8 @@
         <dependency component="googlecontacts-photoManagement"/>
         <dependency component="googlecontacts-batchOperations"/>
         <description>WSO2 Connector for Google Contacts</description>
+        <authenticationInfo>
+            https://docs.wso2.com/display/ESBCONNECTORS/Google+Contacts+Connector#GoogleContactsConnector-ConnectingtoGoogleContacts
+        </authenticationInfo>
     </component>
 </connector>

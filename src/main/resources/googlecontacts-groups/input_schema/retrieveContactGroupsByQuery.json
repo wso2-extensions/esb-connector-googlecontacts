@@ -5,19 +5,23 @@
   "properties": {
     "startIndex": {
       "id": "http:\/\/wso2jsonschema.org\/startIndex",
-      "type": "string"
+      "type": "string",
+      "nullable": "true"
     },
     "sortorder": {
       "id": "http:\/\/wso2jsonschema.org\/sortorder",
-      "type": "string"
+      "type": "string",
+      "nullable": "true"
     },
     "showdeleted": {
       "id": "http:\/\/wso2jsonschema.org\/showdeleted",
-      "type": "string"
+      "type": "string",
+      "nullable": "true"
     },
     "orderby": {
       "id": "http:\/\/wso2jsonschema.org\/orderby",
-      "type": "string"
+      "type": "string",
+      "nullable": "true"
     },
     "userEmail": {
       "id": "http:\/\/wso2jsonschema.org\/userEmail",
@@ -25,15 +29,18 @@
     },
     "group": {
       "id": "http:\/\/wso2jsonschema.org\/group",
-      "type": "string"
+      "type": "string",
+      "nullable": "true"
     },
     "maxResults": {
       "id": "http:\/\/wso2jsonschema.org\/maxResults",
-      "type": "number"
+      "type": "number",
+      "nullable": "true"
     },
     "updatedMin": {
       "id": "http:\/\/wso2jsonschema.org\/updatedMin",
-      "type": "string"
+      "type": "string",
+      "nullable": "true"
     }
   },
   "type": "object"

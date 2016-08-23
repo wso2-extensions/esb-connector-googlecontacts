@@ -9,7 +9,8 @@
     },
     "familyName": {
       "id": "http:\/\/wso2jsonschema.org\/familyName",
-      "type": "string"
+      "type": "string",
+      "nullable": "true"
     },
     "emailAddress": {
       "id": "http:\/\/wso2jsonschema.org\/emailAddress",
@@ -21,11 +22,13 @@
     },
     "fullName": {
       "id": "http:\/\/wso2jsonschema.org\/fullName",
-      "type": "string"
+      "type": "string",
+      "nullable": "true"
     },
     "givenName": {
       "id": "http:\/\/wso2jsonschema.org\/givenName",
-      "type": "string"
+      "type": "string",
+      "nullable": "true"
     },
     "deleteContactId": {
       "id": "http:\/\/wso2jsonschema.org\/deleteContactId",

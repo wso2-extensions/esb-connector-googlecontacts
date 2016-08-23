@@ -152,10 +152,6 @@
 					payload.postcode = postcode;
 				}
 
-				if (postcode != null && postcode != "") {
-					payload.postcode = postcode;
-				}
-
 				if (country != null && country != "") {
 					payload.country = country;
 				}

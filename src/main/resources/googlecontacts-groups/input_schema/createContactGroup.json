@@ -5,7 +5,8 @@
   "properties": {
     "title": {
       "id": "http:\/\/wso2jsonschema.org\/title",
-      "type": "string"
+      "type": "string",
+      "nullable": "true"
     },
     "userEmail": {
       "id": "http:\/\/wso2jsonschema.org\/userEmail",
@@ -13,7 +14,8 @@
     },
     "info": {
       "id": "http:\/\/wso2jsonschema.org\/info",
-      "type": "string"
+      "type": "string",
+      "nullable": "true"
     }
   },
   "type": "object"

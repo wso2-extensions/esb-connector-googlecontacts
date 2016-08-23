@@ -5,15 +5,18 @@
   "properties": {
     "content": {
       "id": "http:\/\/wso2jsonschema.org\/content",
-      "type": "string"
+      "type": "string",
+      "nullable": "true"
     },
     "updated": {
       "id": "http:\/\/wso2jsonschema.org\/updated",
-      "type": "string"
+      "type": "string",
+      "nullable": "true"
     },
     "familyName": {
       "id": "http:\/\/wso2jsonschema.org\/familyName",
-      "type": "string"
+      "type": "string",
+      "nullable": "true"
     },
     "contactIdUpdate": {
       "id": "http:\/\/wso2jsonschema.org\/contactIdUpdate",
@@ -25,15 +28,18 @@
     },
     "fullName": {
       "id": "http:\/\/wso2jsonschema.org\/fullName",
-      "type": "string"
+      "type": "string",
+      "nullable": "true"
     },
     "givenName": {
       "id": "http:\/\/wso2jsonschema.org\/givenName",
-      "type": "string"
+      "type": "string",
+      "nullable": "true"
     },
     "otherPhoneNumber": {
       "id": "http:\/\/wso2jsonschema.org\/otherPhoneNumber",
-      "type": "string"
+      "type": "string",
+      "nullable": "true"
     }
   },
   "type": "object"

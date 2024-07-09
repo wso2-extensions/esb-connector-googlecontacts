@@ -1,0 +1,21 @@
+{
+    "name": "Google Contacts",
+    "owner": "WSO2",
+    "category": "Productivity Tools",
+    "documentationUrl": "https://docs.wso2.org/display/ESBCONNECTORS/Google+Contacts+Connector",
+    "description": "The Google Contacts connector allows you to connect to Google Contacts, which is Google's contact management tool that lets you store and organize contact information of the people you communicate with. Each contact can contain basic information such as name, email address, and telephone number and can also include extended information such as physical address, employer, department, or job title.",
+    "status": "Unsupported",
+    "labels": [
+        "connector"
+    ],
+    "releases": [
+        {
+            "tagName": "v1.0.1",
+            "products": [
+                "ESB 5.0.0",
+                "ESB 4.9.0"
+            ],
+            "isHidden": false
+        }
+    ]
+}
